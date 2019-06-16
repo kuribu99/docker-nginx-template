@@ -1,6 +1,6 @@
 # docker-nginx-template
 
-This repository contains a template to automate tge  creation of reverse proxies on NGINX using handlebars templating engine.
+This repository contains a template to automate the creation of reverse proxies on NGINX using handlebars templating engine.
 
 ## How it Works
 
@@ -12,27 +12,39 @@ This repository contains a template to automate tge  creation of reverse proxies
 
 ## Folder Structure
 
-- `nginx`: Contains all NGINX related configurations
-  - `conf.d`: stores configuration files
-    - `ssl`: stores SSL certificates
-  - `sites-enabled`: stores all sites that are configured. Do not add files here - it should be managed by script
-  - `snippets`: usesful configuration snippets
-  - `nginx.conf`: NGINX root configuration
-- `systemd`: stores all services that should be launched in Docker image
-  - `nginx.service`: default NGINX service
-- `templates`: stores all templates
-- `src`: stores all source code
-  - `hosts.json`: JSON file that is used to generate sites
-- `config.json`: stores configuration for `build.js`
-- `build.js`: build script that will generate all sites based on `hosts.json`
+```md
+root
+|   config.json: stores configuration for `build.js`
+|   build.js: build script that will generate all sites based on `hosts.json`
+|   nginx.conf: NGINX root configuration
+|
+└───nginx: Contains all NGINX related configurations
+|   |
+|   └───conf.d: stores configuration files
+|       |
+|       └───ssl: stores SSL certificates
+|
+└───snippets: usesful configuration snippets
+|
+└───systemd: stores all services that should be launched in Docker image
+|   |   nginx.service: default NGINX service
+|
+└───templates: stores all templates
+|
+└───src: stores all source code
+|       |   hosts.json: JSON file that is used to generate sites
+|
+|
+└───sites-enabled: stores all sites that are configured. *Do not add files here* - it should be managed by script
+```
 
 ## JSON schema for hosts.json
 
 `hosts.json` contains an `array`, in which each item is an JSON object with the fields:
 
-- `serverName`: name of the server. Will be injected to template. E.g. `www.localhost.com`
-- `backendUrl`: URL of the proxied server. Will be injected to template
-- `template`: name of the template used. Template must be present in `templates` folder
+- `serverName: name of the server. Will be injected to template. E.g. `www.localhost.com`
+- `backendUrl: URL of the proxied server. Will be injected to template
+- `template: name of the template used. Template must be present in `templates` folder
 - `data`: JSON object to supply additional data used in template.
 
 ### Sample
