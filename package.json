@@ -1,0 +1,29 @@
+{
+  "name": "docker-nginx-template",
+  "version": "1.0.0",
+  "description": "This repository contains a template to automate creation of reverse proxies on NGINX using handlebars templating engine",
+  "main": "build.js",
+  "scripts": {
+    "start": "docker run -p 80:80 -p 443:443 -d  --name nginx docker-nginx-template:1.0.0",
+    "stop": "docker stop nginx",
+    "rm": "docker rm nginx",
+    "prebuild": "node build.js",
+    "build": "docker build . -t \"docker-nginx-template:1.0.0\"",
+    "bash": "docker exec -it nginx bash",
+    "restart": "npm run stop && npm run rm && npm run build && npm run start",
+    "generate-ssl": "openssl req -x509 -nodes -newkey rsa:4096 -days 365 -keyout ./nginx/conf.d/ssl/private/nginx-selfsigned-key.pem -out ./nginx/conf.d/ssl/certs/nginx-selfsigned-cert.pem"
+  },
+  "dependencies": {
+    "handlebars": "4.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuribu99/docker-nginx-template.git"
+  },
+  "author": "kuribu99",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kuribu99/docker-nginx-template/issues"
+  },
+  "homepage": "https://github.com/kuribu99/docker-nginx-template#readme"
+}

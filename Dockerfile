@@ -17,5 +17,10 @@ COPY nginx/sites-enabled sites-enabled
 COPY nginx/nginx.conf nginx.conf
 
 
+### Copy all certs
+WORKDIR /etc/ssl/
+COPY nginx/conf.d/ssl .
+
 ### Run test
+WORKDIR /etc/nginx/
 RUN service nginx configtest

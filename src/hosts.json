@@ -1,0 +1,8 @@
+[
+    {
+        "serverName": "www.localhost.com",
+        "backendUrl": "http://www.w.kd-krsko.si/",
+        "template": "reverse-proxy-https",
+        "data": {}
+    }
+]
