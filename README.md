@@ -70,15 +70,15 @@ root
 
 This command will run the Docker image
 
-### Run Docker Image: `npm run stop`
+### Stop Docker Instance: `npm run stop`
 
 This command will stop the running Docker instance
 
-### Run Docker Image: `npm run rm`
+### Delete Docker Instance: `npm run rm`
 
 This command will delete the instance
 
-### Connect to the Docker Image: `npm run bash`
+### Connect to the Docker Instance: `npm run bash`
 
 This command will run `bash` in the current running Docker instance
 
@@ -90,7 +90,6 @@ This command will:
 - Recreate all the sites
 - Rebuild the Docker image
 - Run the Docker instance
-
 
 ## Helper Commands
 
