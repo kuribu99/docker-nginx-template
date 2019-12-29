@@ -14,7 +14,7 @@
     "generate-ssl": "openssl req -x509 -nodes -newkey rsa:4096 -days 365 -keyout ./nginx/conf.d/ssl/private/nginx-selfsigned-key.pem -out ./nginx/conf.d/ssl/certs/nginx-selfsigned-cert.pem"
   },
   "dependencies": {
-    "handlebars": "4.1.2"
+    "handlebars": "4.5.3"
   },
   "repository": {
     "type": "git",
